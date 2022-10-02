@@ -1,7 +1,7 @@
 import React from "react";
 
 const Header = () => (
-  <nav className="navbar navbar-expand-md navbar-light shadow-sm header_fe">
+  <nav className="navbar navbar-expand-md navbar-light shadow-sm header_fe mb-3">
     <div className="container ">
       <div className="d-flex port-header">
         <div className="p-2" data-toggle="collapse">

@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
 const Job = () => {
@@ -7,7 +8,6 @@ const Job = () => {
   const [job, setJob] = useState();
   const fetchData = () => {
     axios.get(`${baseURL}getJobs`).then((response) => {
-      console.log("aa", response.data);
       setJob(response.data);
     });
   };
@@ -17,28 +17,24 @@ const Job = () => {
 
   console.log(job);
   return (
-    <div>
+    <div mb-3>
       {job != undefined &&
         job.map((item) => {
-          console.log("qweq", item);
-
           return (
-            <div>
-              <div class="container">
-                <div className="container-fluid p-4" id="change_nav">
-                  <div className="row justify-content-center align-items-center">
-                    <div className="card recent_job" style={{ width: "18rem" }}>
-                      <div className="card-body">
-                        <h5 className="card-title">{item.position}</h5>
-                        <h6 className="card-subtitle mb-2 text-muted">
-                          {item.job_description}
-                        </h6>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <Card
+              style={{
+                display: `flex`,
+                flexDirection: `row`,
+                justifyContent: `center`,
+                margin: "50px",
+              }}
+            >
+              <Card.Body>
+                <Card.Title>{item.position}</Card.Title>
+                <Card.Text>{item.job_description}</Card.Text>
+                <Button variant="primary">See More</Button>
+              </Card.Body>
+            </Card>
           );
         })}
     </div>
